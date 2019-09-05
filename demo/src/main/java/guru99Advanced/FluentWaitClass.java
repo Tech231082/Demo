@@ -1,0 +1,48 @@
+package guru99Advanced;
+
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+
+public class FluentWaitClass {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "C:/mytools/chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		String eTitle = "Demo Guru99 Page";
+		String aTitle = "" ;
+		
+		
+		driver.get("http://demo.guru99.com/test/guru99home/" );
+		
+		aTitle = driver.getTitle();
+		
+		if (aTitle.contentEquals(eTitle))
+		{
+		System.out.println( "Test Passed") ;
+		}
+		else {
+		System.out.println( "Test Failed" );
+			}
+		Wait wait=new FluentWait(driver).withTimeout(20, TimeUnit.SECONDS).pollingEvery(3, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+		WebElement clickseleniumlink = wait.until(new Function<WebDriver, WebElement>(){
+			
+			public WebElement apply(WebDriver driver ) {
+				return driver.findElement(By.xpath("/html/body/div[1]/section/div[2]/div/div[1]/div/div[1]/div/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/a/i"));
+			}
+		});
+		//click on the selenium link
+		clickseleniumlink.click();
+		
+		
+
+	}
+
+}
