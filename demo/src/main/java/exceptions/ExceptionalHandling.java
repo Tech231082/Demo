@@ -12,8 +12,10 @@ public class ExceptionalHandling {
 	    	
 	    		//int array[]= {1,2,3,4,5};
 		    	//System.out.println(array[5]);
-		    	
-		    	System.out.println(str.charAt(6));
+		    	//System.out.println("Start");
+		    	//System.out.println(str.charAt(6));
+	    	
+	    	
 	    	}
 	    catch(ArithmeticException e){
 	    	System.out.println("Arithmetic exception caught "+e.getMessage());
@@ -21,6 +23,8 @@ public class ExceptionalHandling {
 	    catch(ArrayIndexOutOfBoundsException e) {
     		System.out.println("Array Index Out Of Bounds Exception caught "+e.getMessage());
     	}
+	    
+	    
 	    catch(StringIndexOutOfBoundsException e) {
 	    	System.out.println("String Index Out Of Bounds Exception caught "+e.getMessage());
 	    }
